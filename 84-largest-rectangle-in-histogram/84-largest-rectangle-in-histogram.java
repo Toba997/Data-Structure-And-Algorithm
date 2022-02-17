@@ -16,7 +16,8 @@ class Solution {
         int [] ans = new int[n];
         
         for(int i=0;i<n;i++){
-            while (!st.isEmpty() && a[i] <= a[st.peek()]) {
+            int curr = a[i];
+            while (!st.isEmpty() && curr <= a[st.peek()]) {
                 st.pop();
             }
             if(st.isEmpty()){
