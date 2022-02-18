@@ -13,7 +13,11 @@ class Solution {
             while(!st.isEmpty() && st.peek() <= nums[i]){
                 st.pop();
             }
-            res[i] = st.isEmpty() ? -1 : st.peek();    
+            if(st.isEmpty()){
+                res[i]=-1;
+            }else{
+                res[i]=st.peek();
+            }
             st.push(nums[i]);
         }
         
