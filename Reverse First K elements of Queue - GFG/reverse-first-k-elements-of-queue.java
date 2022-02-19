@@ -67,7 +67,7 @@ class GfG {
         }
         
         while(!q.isEmpty()){
-            que.offer(q.poll());
+            que.add(q.poll());
         }
         return que;
     }
