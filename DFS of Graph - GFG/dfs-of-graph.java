@@ -47,7 +47,7 @@ class Solution {
     public ArrayList<Integer> dfsOfGraph(int V, ArrayList<ArrayList<Integer>> adj) {
         // Code here
        ArrayList<Integer> storeDfs = new ArrayList<>(); 
-        boolean vis[] = new boolean[V+1]; 
+        boolean vis[] = new boolean[V]; 
         for(int i = 0;i<V;i++) {
             if(!vis[i]) dfs(i, vis, adj, storeDfs); 
         }
