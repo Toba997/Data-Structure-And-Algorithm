@@ -29,21 +29,20 @@ class GFG {
         }
     }
 }// } Driver Code Ends
-
-
 class Solution {
     class Node{
         int first;
         int second;
-        public Node(int first,int second){
+        
+        Node(int first, int second){
             this.first=first;
             this.second=second;
         }
     }
-    public boolean checkforCycle(ArrayList<ArrayList<Integer>> adj, int s,boolean vis[]){
+    public boolean checkforCycle(ArrayList<ArrayList<Integer>> adj,int s,boolean vis[]){
         Queue<Node> q = new LinkedList<>();
         q.add(new Node(s,-1));
-        vis[s]=true;
+        vis[s] = true;
         
         while(!q.isEmpty()){
             int node = q.peek().first;
