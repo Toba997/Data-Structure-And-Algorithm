@@ -29,6 +29,8 @@ class GFG {
         }
     }
 }// } Driver Code Ends
+
+
 class Solution {
     class Node{
         int first;
@@ -39,8 +41,8 @@ class Solution {
             this.second=second;
         }
     }
-    public boolean checkforCycle(ArrayList<ArrayList<Integer>> adj,int s,boolean vis[]){
-        Queue<Node> q = new LinkedList<>();
+    public boolean checkforCycle(ArrayList<ArrayList<Integer>> adj, int s,boolean [] vis){
+       Queue<Node> q = new LinkedList<>();
         q.add(new Node(s,-1));
         vis[s] = true;
         
