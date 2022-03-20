@@ -32,51 +32,32 @@ class GFG {
 
 
 class Solution {
-    class Node{
-        int first;
-        int second;
-        
-        Node(int first, int second){
-            this.first=first;
-            this.second=second;
-        }
-    }
-    public boolean checkforCycle(ArrayList<ArrayList<Integer>> adj, int s,boolean [] vis){
-       Queue<Node> q = new LinkedList<>();
-        q.add(new Node(s,-1));
-        vis[s] = true;
-        
-        while(!q.isEmpty()){
-            int node = q.peek().first;
-            int par = q.peek().second;
-            
-            q.remove();
-            
-            for(int it: adj.get(node)){
-                if(vis[it]==false){
-                    q.add(new Node(it,node));
-                    vis[it]=true;
-                }
-                else if(par!=it){
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
     // Function to detect cycle in an undirected graph.
-    public boolean isCycle(int V, ArrayList<ArrayList<Integer>> adj) {
-        // Code here
-        boolean vis[] = new boolean[V];
-        Arrays.fill(vis,false);
+   public boolean checkForCycle(int node, int parent, boolean vis[], ArrayList<ArrayList<Integer>> adj) {
+        vis[node] = true; 
+        for(Integer it: adj.get(node)) {
+            if(vis[it] == false) {
+                if(checkForCycle(it, node, vis, adj) == true) 
+                    return true; 
+            }
+            else if(it!=parent) 
+                return true; 
+        }
         
-        for(int i=0;i<V;i++){
-            if(vis[i]==false){
-                if(checkforCycle(adj,i,vis)){
-                    return true;
-                }
+        return false; 
+    }
+    // 0-based indexing Graph
+    public boolean isCycle(int V, ArrayList<ArrayList<Integer>> adj)
+    {
+        boolean vis[] = new boolean[V];
+        
+        for(int i = 0;i<V;i++) {
+            if(vis[i] == false) {
+                if(checkForCycle(i, -1, vis, adj))
+                    return true; 
             }
         }
-        return false;
+        
+        return false; 
     }
 }
