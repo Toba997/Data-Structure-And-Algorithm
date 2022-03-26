@@ -37,6 +37,7 @@ class GFG
 class Solution
 {
     boolean dfsCheck(ArrayList<ArrayList<Integer>> adj, int node, int color[]) {
+        if(color[node]==-1) color[node]=1;
 		for(Integer it: adj.get(node)) {
 			if(color[it] == -1) {
 				color[it] = 1 - color[node]; 
