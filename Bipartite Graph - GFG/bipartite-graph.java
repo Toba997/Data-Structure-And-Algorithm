@@ -36,38 +36,34 @@ class GFG
 
 class Solution
 {
-    boolean bfsCheck(ArrayList<ArrayList<Integer>>adj,int node,int color[]){
-        Queue<Integer> q = new LinkedList<>();
-        q.add(node);
-        color[node] = 1;
-        
-        while(!q.isEmpty()){
-            int nde = q.poll();
-            for(int it:adj.get(nde)){
-                if(color[it]==-1){
-                    color[it]=1-color[nde];
-                    q.add(it);
-                }else if(color[it]==color[nde]){
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
+    boolean dfsCheck(ArrayList<ArrayList<Integer>> adj, int node, int color[]) {
+		for(Integer it: adj.get(node)) {
+			if(color[it] == -1) {
+				color[it] = 1 - color[node]; 
+
+				if(!dfsCheck(adj, it, color)) 
+					return false; 
+			}
+			else if(color[it] == color[node]) {
+				return false; 
+			}
+		}
+		return true; 
+	}
     public boolean isBipartite(int V, ArrayList<ArrayList<Integer>>adj)
     {
         // Code here
         int color[] = new int[V];
-        for(int i=0;i<V;i++){
-            color[i] = -1;
+        for(int i = 0;i<V;i++) {
+        	color[i] = -1; 
         }
-        for(int i=0;i<V;i++){
-            if(color[i]==-1){
-                if(bfsCheck(adj,i,color)==false){
-                    return false;
-                }
-            }
+        for(int i = 0;i<V;i++) {
+        	if(color[i] == -1) {
+        		if(!dfsCheck(adj, i, color)) {
+        			return false; 
+        		}
+        	}
         }
-        return true;
+        return true; 
     }
 }
