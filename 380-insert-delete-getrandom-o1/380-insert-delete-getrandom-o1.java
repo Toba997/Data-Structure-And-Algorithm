@@ -1,51 +1,43 @@
 class RandomizedSet {
-   HashMap<Integer,Integer> hm;
-    ArrayList<Integer> list;
-    Random rand;
-    
+       Map<Integer, Integer> valueMap;
+    List<Integer> valueList;
+
+    /** Initialize your data structure here. */
     public RandomizedSet() {
-       hm =new HashMap<>();
-       list=new ArrayList<>();
-       rand=new Random();
+        valueMap = new HashMap<>();
+        valueList = new ArrayList<>();
     }
     
+    /** Inserts a value to the set. Returns true if the set did not already contain the specified element. */
     public boolean insert(int val) {
-        if(hm.containsKey(val))
+        if (valueMap.containsKey(val)) {
             return false;
-        
-        list.add(val);
-        int lidx=list.size()-1;
-        
-        hm.put(val,lidx);
-        
+        }
+        valueMap.put(val, valueList.size());
+        valueList.add(val);
         return true;
     }
     
     public boolean remove(int val) {
-        if(!hm.containsKey(val))
+        if (!valueMap.containsKey(val)) {
             return false;
+        }
+        int index = valueMap.get(val);
+        int lastIndex = valueList.size() - 1;
+        int lastElement = valueList.get(lastIndex);
         
-        int lastidx=list.size()-1;
-        int lastval=list.get(lastidx);
+        Collections.swap(valueList, index, lastIndex);
+        valueList.remove(lastIndex);
         
-        int vidx=hm.get(val);
-        
-        list.set(lastidx,val);
-        list.set(vidx,lastval);
-        
-       
-        hm.put(lastval,vidx);
-         hm.put(val,lastidx);
-        
-         list.remove(lastidx);
-        hm.remove(val);
-        
+        valueMap.put(lastElement, index);
+        valueMap.remove(val);
         return true;
     }
     
+    /** Get a random element from the set. */
     public int getRandom() {
-       int nu=  rand.nextInt(list.size());
-        return list.get(nu);
+        int randomIndex = new Random().nextInt(valueList.size());
+        return valueList.get(randomIndex);        
     }
 }
 /**
