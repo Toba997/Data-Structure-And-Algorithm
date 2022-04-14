@@ -1,6 +1,6 @@
 class Solution {
     public void rotate(int[][] matrix) {
-        for(int i = 0; i<matrix.length; i++){
+         for(int i = 0; i<matrix.length; i++){
             for(int j = i; j<matrix[0].length; j++){
                 int temp = 0;
                 temp = matrix[i][j];
@@ -8,15 +8,16 @@ class Solution {
                 matrix[j][i] = temp;
             }
         }
-        for(int i=0;i<matrix.length;i++){
+         for(int i=0;i<matrix.length;i++){
+             
             int start=0,end=matrix[i].length-1;
             while(start<=end){
-                int temp=matrix[i][start];
+                int temp2=matrix[i][start];
                 matrix[i][start]=matrix[i][end];
-                matrix[i][end]=temp;
+                matrix[i][end]=temp2;
                 start++;
                 end--;
-            }
+            }    
         }
     }
 }
