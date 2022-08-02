@@ -8,7 +8,7 @@ class Solution {
             if(s.charAt(i)=='#'){
                     String updated = s.charAt(i-2)+""+s.charAt(i-1);
                     
-                    ans = (char)(Integer.parseInt(updated)+96) + ans;
+                    ans = (char)(Integer.valueOf(updated)+96) + ans;
                     
                     i=i-2;
             }else {
