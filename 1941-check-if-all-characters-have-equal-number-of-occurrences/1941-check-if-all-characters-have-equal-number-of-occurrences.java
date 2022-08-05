@@ -1,17 +1,17 @@
 class Solution {
     public boolean areOccurrencesEqual(String s) {
-        int [] freq = new int[26];
-        
-        for(int i=0;i<s.length();i++){
-            freq[s.charAt(i) - 'a']++;
+        HashMap<Character, Integer> map = new HashMap<>();
+        for(int i = 0; i < s.length(); i++){
+            if(map.containsKey(s.charAt(i))){
+            map.put(s.charAt(i),map.get(s.charAt(i))+1);
+            } else
+                map.put(s.charAt(i), 1);
         }
-        int val = freq[s.charAt(0) - 'a'];
-        
-        for(int i=0;i<26;i++){
-            if(freq[i]!=0 && freq[i]!=val){
+        int prev = map.get(s.charAt(0));
+        for(char count: map.keySet()){
+            if(map.get(count)!= prev)
                 return false;
-            }
-        }   
+        }
         return true;
     }
 }
