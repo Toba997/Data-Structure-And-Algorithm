@@ -2,7 +2,7 @@ class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
    Arrays.sort(nums);
         
-        List<List<Integer>> res = new LinkedList<>(); 
+        List<List<Integer>> res = new ArrayList<>(); 
         
         for (int i = 0; i < nums.length-2; i++) {
             
@@ -29,3 +29,5 @@ class Solution {
         return res;
     }
 }
+
+
