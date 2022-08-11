@@ -1,12 +1,15 @@
 class Solution {
     public String longestCommonPrefix(String[] strs) {
-        String flow = strs[0];
+        String prefix = strs[0];
         
         for(int i=1;i<strs.length;i++){
-            while(strs[i].indexOf(flow) != 0){
-                flow = flow.substring(0,flow.length()-1);
-            }
+           while(strs[i].indexOf(prefix)!=0){
+               prefix = prefix.substring(0,prefix.length()-1);
+          }
         }
-        return flow;
+        return prefix;
     }
 }
+
+// prefix = flower'
+
